@@ -1,0 +1,29 @@
+.field {
+  .field-label {
+    font-weight: bolder;
+    margin-bottom: 0.3rem;
+  }
+
+  .field-box-error {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .field-error {
+    color: #a20000;
+    margin-top: 0.3rem;
+    // font-style: italic;
+  }
+
+  .field-image {
+    display: flex;
+    justify-content: center;
+    width: inherit;
+    width: 100%;
+    img {
+      width: auto;
+      padding: 2rem;
+      max-height: 13rem;
+    }
+  }
+}

@@ -1,0 +1,214 @@
+<div class="card flex flex-column gap-3 flex">
+  <div class="flex justify-content-between align-items-center w-100">
+    <h2>Registrar Producto</h2>
+    <button [routerLink]="['/products']">
+      <span>Volver</span>
+    </button>
+  </div>
+
+  <form [formGroup]="formGroup" (submit)="onSubmit()">
+    <div class="grid">
+      <div class="field col-12 col-sm-6">
+        <label class="field-label">ID (*)</label>
+        <input
+          placeholder="ID"
+          formControlName="id"
+          type="text"
+          [ngClass]="{
+            'input-invalid':
+              (this.controlId?.hasError('required') ||
+                this.controlId?.hasError('minlength') ||
+                this.controlId?.hasError('maxlength') ||
+                this.controlId?.hasError('pattern')) &&
+              this.controlId?.touched
+          }"
+        />
+        <div class="field-box-error">
+          <span
+            class="field-error"
+            *ngIf="controlId?.hasError('required') && controlId?.touched"
+          >
+            El campo <b>ID</b> es obligatorio.
+          </span>
+          <span
+            class="field-error"
+            *ngIf="controlId?.hasError('minlength') && controlId?.touched"
+          >
+            El campo <b>ID</b> debe contener un mínimo de 3 caracteres.
+          </span>
+          <span
+            class="field-error"
+            *ngIf="controlId?.hasError('maxlength') && controlId?.touched"
+          >
+            El campo <b>ID</b> debe contener un máximo de 10 caracteres.
+          </span>
+          <span
+            class="field-error"
+            *ngIf="controlId?.hasError('pattern') && controlId?.touched"
+          >
+            El campo <b>ID</b> es inválido.
+          </span>
+        </div>
+      </div>
+      <div class="field col-12 col-sm-6">
+        <label class="field-label">Nombre del producto (*)</label>
+        <input
+          placeholder="Nombre del producto"
+          formControlName="name"
+          type="text"
+          [ngClass]="{
+            'input-invalid':
+              (controlName?.hasError('required') ||
+                controlName?.hasError('minlength') ||
+                controlName?.hasError('maxlength')) &&
+              controlName?.touched
+          }"
+        />
+        <div class="field-box-error">
+          <span
+            class="field-error"
+            *ngIf="controlName?.hasError('required') && controlName?.touched"
+          >
+            El campo <b>Nombre del producto</b> es obligatorio.
+          </span>
+          <span
+            class="field-error"
+            *ngIf="controlName?.hasError('minlength') && controlName?.touched"
+          >
+            El campo <b>Nombre del producto</b> debe contener un mínimo de 5.
+            caracteres.
+          </span>
+          <span
+            class="field-error"
+            *ngIf="controlName?.hasError('maxlength') && controlName?.touched"
+          >
+            El campo <b>Nombre del producto</b> debe contener un máximo de 100.
+            caracteres.
+          </span>
+        </div>
+      </div>
+      <div class="field col-12">
+        <label class="field-label">Descripción (*)</label>
+        <input
+          placeholder="Descripción"
+          formControlName="description"
+          type="text"
+          [ngClass]="{
+            'input-invalid':
+              (controlDescription?.hasError('required') ||
+                controlDescription?.hasError('minlength') ||
+                controlDescription?.hasError('maxlength')) &&
+              controlDescription?.touched
+          }"
+        />
+        <div class="field-box-error">
+          <span
+            class="field-error"
+            *ngIf="
+              controlDescription?.hasError('required') &&
+              controlDescription?.touched
+            "
+          >
+            El campo <b>Descripción</b> es obligatorio.
+          </span>
+          <span
+            class="field-error"
+            *ngIf="
+              controlDescription?.hasError('minlength') &&
+              controlDescription?.touched
+            "
+          >
+            El campo <b>Descripción</b> debe contener un mínimo de 10.
+          </span>
+          <span
+            class="field-error"
+            *ngIf="
+              controlDescription?.hasError('maxlength') &&
+              controlDescription?.touched
+            "
+          >
+            El campo <b>Descripción</b> debe contener un máximo de 200.
+          </span>
+        </div>
+      </div>
+      <div class="field col-12">
+        <label class="field-label">Logo (*)</label>
+        <input
+          placeholder="Logo"
+          formControlName="logo"
+          type="url"
+          [ngClass]="{
+            'input-invalid':
+              (controlLogo?.hasError('required') ||
+                controlLogo?.hasError('pattern')) &&
+              controlLogo?.touched
+          }"
+        />
+        <div class="field-box-error">
+          <span
+            class="field-error"
+            *ngIf="controlLogo?.hasError('required') && controlLogo?.touched"
+          >
+            El campo <b>Logo</b> es obligatorio.
+          </span>
+          <span
+            class="field-error"
+            *ngIf="controlLogo?.hasError('pattern') && controlLogo?.touched"
+          >
+            El campo <b>Logo</b> debe ser una url válida.
+          </span>
+        </div>
+      </div>
+      <div class="field col-12 col-sm-6">
+        <label class="field-label">Fecha de liberación (*)</label>
+        <input
+          placeholder="Fecha de liberación"
+          formControlName="dateRelease"
+          type="date"
+          [min]="today | date : 'yyyy-MM-dd'"
+          [ngClass]="{
+            'input-invalid':
+              controlDateRelease?.hasError('required') &&
+              controlDateRelease?.touched
+          }"
+        />
+        <span
+          class="field-error"
+          *ngIf="
+            controlDateRelease?.hasError('required') &&
+            controlDateRelease?.touched
+          "
+        >
+          El campo <b>Fecha de liberación</b> es obligatorio.
+        </span>
+      </div>
+      <div class="field col-12 col-sm-6">
+        <label class="field-label">Fecha de reestructuración (*)</label>
+        <input
+          readonly
+          placeholder="Fecha de reestructuración"
+          formControlName="dateRevision"
+          type="date"
+          [ngClass]="{
+            'input-invalid':
+              controlDateRevision?.hasError('required') &&
+              controlDateRevision?.touched
+          }"
+        />
+        <span
+          class="field-error"
+          *ngIf="
+            controlDateRevision?.hasError('required') &&
+            controlDateRevision?.touched
+          "
+        >
+          El campo <b>Fecha de reestructuración</b> es obligatorio.
+        </span>
+      </div>
+    </div>
+    <div class="card-footer justify-content-end gap-2">
+      <button type="button" (click)="onResetForm()">Reiniciar</button>
+      <button type="submit" class="button-warning">Registrar</button>
+    </div>
+  </form>
+</div>

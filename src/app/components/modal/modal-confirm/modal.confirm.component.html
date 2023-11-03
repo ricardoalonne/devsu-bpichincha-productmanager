@@ -1,0 +1,23 @@
+<ng-container *ngIf="isOpenModal">
+  <div class="modal-confirm" #modal>
+    <div class="modal-confirm-content">
+      <div class="modal-confirm-header">
+        <span class="modal-confirm-title">{{ title }}</span>
+        <button class="close-modal-icon" (click)="onCloseModal()">
+          <google-icon class="button-icon" iconName="close"></google-icon>
+        </button>
+      </div>
+      <div class="modal-confirm-body">
+        <span class="modal-body-message">{{ message }}</span>
+      </div>
+      <div class="modal-confirm-footer">
+        <button class="close-modal" (click)="onCloseModal()">
+          {{ closeButtonLabel }}
+        </button>
+        <button class="action-modal button-warning" (click)="onActionModal()">
+          {{ actionButtonLabel }}
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

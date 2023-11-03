@@ -1,0 +1,15 @@
+<div class="layout-topbar">
+  <button
+    #menubutton
+    class="toogle-menu button-icon"
+    [ngClass]="{
+      'layout-toolbar-button': !layoutService.state.profileSidebarVisible
+    }"
+    (click)="layoutService.onMenuToggle()"
+  >
+    <google-icon iconName="menu"></google-icon>
+  </button>
+  <div class="content-main-logo" routerLink="/">
+    <img src="assets/images/bp_logo.webp" />
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="card flex flex-column gap-3 flex">
+  <div class="flex justify-content-between align-items-center w-100">
+    <h2>Detalles de Producto</h2>
+    <button [routerLink]="['/products']">
+      <span>Volver</span>
+    </button>
+  </div>
+
+  <div class="grid">
+    <div class="field col-12 col-sm-6">
+      <label class="field-label">Identificador</label>
+      <input
+        placeholder="ID"
+        [(ngModel)]="currentProduct.id"
+        type="text"
+        readonly
+      />
+    </div>
+    <div class="field col-12 col-sm-6">
+      <label class="field-label">Nombre del producto</label>
+      <input
+        placeholder="Nombre del producto"
+        [(ngModel)]="currentProduct.name"
+        type="text"
+        readonly
+      />
+    </div>
+    <div class="field col-12">
+      <label class="field-label">Descripción</label>
+      <input
+        placeholder="Descripción"
+        [(ngModel)]="currentProduct.description"
+        type="text"
+        readonly
+      />
+    </div>
+    <div class="field col-12">
+      <label class="field-label">Logo</label>
+      <input
+        placeholder="Logo"
+        [(ngModel)]="currentProduct.logo"
+        type="url"
+        readonly
+      />
+      <div class="field-image">
+        <img [src]="currentProduct.logo" />
+      </div>
+    </div>
+    <div class="field col-12 col-sm-6">
+      <label class="field-label">Fecha de liberación</label>
+      <input
+        placeholder="Fecha de liberación"
+        [(ngModel)]="currentProduct.dateRelease"
+        type="date"
+        readonly
+      />
+    </div>
+    <div class="field col-12 col-sm-6">
+      <label class="field-label">Fecha de reestructuración</label>
+      <input
+        placeholder="Fecha de reestructuración"
+        [(ngModel)]="currentProduct.dateRevision"
+        type="date"
+        readonly
+      />
+    </div>
+  </div>
+  <div class="card-footer justify-content-between gap-2">
+    <button type="button" (click)="onDelete()">Eliminar</button>
+    <button type="button" (click)="onEdit()" class="button-warning">
+      Editar
+    </button>
+  </div>
+</div>
+
+<modal-confirm #modalConfirm actionButtonLabel="Confirmar"></modal-confirm>

@@ -1,0 +1,123 @@
+<div class="card flex flex-column gap-3 flex">
+  <div class="flex justify-content-between align-items-center w-100">
+    <h2>Productos</h2>
+    <button class="button-warning" [routerLink]="['/products/register']">
+      <span>Agregar</span>
+    </button>
+  </div>
+
+  <div class="flex align-items-center gap-3">
+    <span class="icon-2xl"><google-icon iconName="search"></google-icon> </span>
+    <input
+      type="text"
+      placeholder="Buscar Productos"
+      [(ngModel)]="search"
+      (keyup)="onSearchProduct()"
+    />
+    <button
+      *ngIf="search.trim() !== ''"
+      class="button-icon"
+      (click)="onClearSearchProduct()"
+    >
+      <google-icon iconName="delete_sweep"> </google-icon>
+    </button>
+  </div>
+
+  <div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th [ngStyle]="{ 'min-width': '150px' }">Nombre del producto</th>
+            <th [ngStyle]="{ 'min-width': '120px' }">Fecha de liberación</th>
+            <th [ngStyle]="{ 'min-width': '120px' }">
+              Fecha de reestructuración
+            </th>
+            <th [ngStyle]="{ width: '70px' }"></th>
+          </tr>
+        </thead>
+        <tbody *ngIf="(isLoading$ | async) === false; else skeleton">
+          <tr
+            *ngFor="
+              let product of products | productFilter : page : pageSize : search
+            "
+          >
+            <td data-label="Logo">
+              <img
+                [src]="product.logo"
+                [alt]="product.name"
+                [ngStyle]="{ width: '75px' }"
+              />
+            </td>
+            <td data-label="Nombre del producto">{{ product.name }}</td>
+            <td data-label="Fecha de liberación" class="text-center">
+              {{ product.dateRelease | date : "dd/MM/yyyy" : "+0000" }}
+            </td>
+            <td data-label="Fecha de reestructuración" class="text-center">
+              {{ product.dateRevision | date : "dd/MM/yyyy" : "+0000" }}
+            </td>
+            <td data-label="Acciones">
+              <dropdown
+                iconName="more_vert"
+                [items]="items"
+                [data]="product"
+                orientation="horizontal"
+              >
+              </dropdown>
+            </td>
+          </tr>
+          <tr *ngIf="products.length === 0">
+            <td class="text-center text-base" colspan="5">
+              Sin productos para mostrar.
+              <a routerLink="/products/register">Agregue</a> productos y vuelva
+              aquí.
+            </td>
+          </tr>
+          <tr
+            *ngIf="
+              products.length > 0 &&
+              (products | productFilter : page : pageSize : search).length === 0
+            "
+          >
+            <td class="text-center text-base" colspan="5">
+              No se encontraron resultados con esta coincidencia. Inténtelo de
+              nuevo.
+            </td>
+          </tr>
+        </tbody>
+        <ng-template #skeleton>
+          <tr *ngFor="let _ of [].constructor(12)">
+            <td data-label="Logo"><div class="loader"></div></td>
+            <td data-label="Nombre del producto">
+              <div class="loader"></div>
+            </td>
+            <td data-label="Fecha de liberación">
+              <div class="loader"></div>
+            </td>
+            <td data-label="Fecha de reestructuración">
+              <div class="loader"></div>
+            </td>
+            <td data-label="Acciones"><div class="loader"></div></td>
+          </tr>
+        </ng-template>
+      </table>
+    </div>
+
+    <table-paginator
+      *ngIf="(isLoading$ | async) === false"
+      [total]="products.length"
+      [numberPage]="numberPage"
+      [pageSize]="pageSize"
+      [currentTotal]="
+        (products | productFilter : page : pageSize : search).length
+      "
+      [page]="page"
+      (nextPage)="onNextPage()"
+      (prevPage)="onPrevPage()"
+      (pageSizeChanged)="onPageSizeChanged($event)"
+    ></table-paginator>
+  </div>
+</div>
+
+<modal-confirm #modalConfirm actionButtonLabel="Confirmar"></modal-confirm>

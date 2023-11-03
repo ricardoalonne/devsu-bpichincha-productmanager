@@ -1,0 +1,18 @@
+<div
+  class="toast {{ severity ? 'toast-' + severity : '' }}"
+  *ngIf="showToast"
+  [ngClass]="toastClass"
+>
+  <div class="toast-content">
+    <div class="toast-content-icon">
+      <google-icon [iconName]="iconName ?? 'unknown_5'"></google-icon>
+    </div>
+    <div class="toast-content-text">
+      <p class="toast-content-text-title">{{ title }}</p>
+      <p class="toast-content-text-description">{{ description }}</p>
+    </div>
+  </div>
+  <button class="button-icon button-close-toast" (click)="onCloseToast()">
+    <google-icon iconName="close"></google-icon>
+  </button>
+</div>

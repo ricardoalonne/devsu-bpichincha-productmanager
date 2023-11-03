@@ -1,0 +1,29 @@
+<div #dropdown class="dropdown" [ngClass]="dropdownClass">
+  <button class="dropdown-button" (click)="toggleDropdown()">
+    <span *ngIf="!name && !iconName">Menú</span>
+    <span *ngIf="name">{{ name }}</span>
+    <google-icon
+      class="button-icon"
+      *ngIf="iconName"
+      [iconName]="iconName"
+    ></google-icon>
+  </button>
+  <div
+    class="dropdown-content"
+    [ngClass]="dropdownContentClass"
+    *ngIf="isDropdownOpen"
+  >
+    <button
+      class="dropdown-item"
+      *ngFor="let item of items"
+      (click)="closeDropdown(item)"
+    >
+      <google-icon
+        class="button-icon"
+        *ngIf="item.iconName"
+        [iconName]="item.iconName"
+      ></google-icon>
+      <span>{{ item.name }}</span>
+    </button>
+  </div>
+</div>

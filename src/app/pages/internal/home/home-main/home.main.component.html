@@ -1,0 +1,24 @@
+<div class="card flex flex-column gap-3 flex">
+  <div class="flex justify-content-between align-items-center w-100">
+    <h2>Home</h2>
+  </div>
+
+  <div class="home-menu">
+    <div class="home-products">
+      <div class="home-products-indicator">
+        <span class="home-products-total">{{ productsTotal }}</span>
+        <span class="home-products-label"> Productos </span>
+      </div>
+      <div class="home-products-actions">
+        <button routerLink="/products">
+          <google-icon class="button-icon" iconName="box"></google-icon> Ir a
+          Bandeja
+        </button>
+        <button routerLink="/products/register">
+          <google-icon class="button-icon" iconName="add_box"></google-icon
+          >Registrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
