@@ -1,0 +1,25 @@
+input {
+  font-family: "Nunito";
+  font-size: 14px;
+  padding: 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+
+  &:active:enabled:focus,
+  &:active:enabled:focus-visible {
+    border: #afafaf;
+  }
+
+  &:read-only {
+    border: 2px solid #dadada;
+    color: #6e6e6e;
+  }
+
+  &:invalid,
+  &.input-invalid {
+    border: 2px solid #a20000;
+  }
+}
