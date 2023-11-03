@@ -1,0 +1,41 @@
+.home-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  .home-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .home-products-indicator {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: solid #636b72 0.15rem;
+      border-radius: 1rem;
+      padding: 1rem 1.2rem;
+
+      .home-products-total {
+        font-size: 4rem;
+      }
+
+      .home-products-label {
+        font-size: 1.25rem;
+      }
+    }
+
+    .home-products-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      height: auto;
+
+      button {
+        height: 100%;
+      }
+    }
+  }
+}

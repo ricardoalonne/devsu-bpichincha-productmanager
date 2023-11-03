@@ -1,0 +1,120 @@
+.toast {
+  background: #dbdbdb;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  animation-name: opening-toast;
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+  position: relative;
+  overflow: hidden;
+  border: solid #8b8b8b;
+  border-width: 0 0 0 6px;
+
+  &.close-toast {
+    animation-name: closing-toast;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  &.auto-closing::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.65rem;
+    position: absolute;
+    bottom: 0;
+    animation-name: auto-closing-toast;
+    animation-duration: 5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  &.toast-success {
+    background: #e4f8f0;
+    border: solid #1ea97c;
+    border-width: 0 0 0 6px;
+    color: #1ea97c;
+  }
+  &.toast-warn {
+    background: #fff2e2;
+    border: solid #cc8925;
+    border-width: 0 0 0 6px;
+    color: #cc8925;
+  }
+  &.toast-error {
+    background: #ffe7e6;
+    border: solid #ff5757;
+    border-width: 0 0 0 6px;
+    color: #ff5757;
+  }
+  &.toast-info {
+    background: #e9e9ff;
+    border: solid #696cff;
+    border-width: 0 0 0 6px;
+    color: #696cff;
+  }
+
+  border-width: 0 0 0 6px;
+
+  .toast-content {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+
+    .toast-content-icon {
+      font-size: 3rem;
+    }
+    .toast-content-text {
+      .toast-content-text-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .toast-content-text-description {
+      }
+    }
+  }
+
+  .button-close-toast {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+  }
+
+  @keyframes opening-toast {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes closing-toast {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes auto-closing-toast {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0;
+    }
+  }
+}

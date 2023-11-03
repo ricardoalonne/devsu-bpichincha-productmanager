@@ -1,0 +1,22 @@
+<ul class="layout-menu">
+  <ng-container *ngFor="let item of model; let i = index">
+    <a
+      class="button menu-option"
+      *ngIf="item.type === 'option'"
+      [routerLink]="item.redirectTo"
+    >
+      <google-icon class="button-icon" [iconName]="item.iconName"></google-icon>
+      <span>{{ item.nameOption }}</span>
+    </a>
+    <a
+      class="button menu-option"
+      *ngIf="item.type === 'link'"
+      [href]="item.redirectTo"
+      target="_blank"
+    >
+      <google-icon class="button-icon" [iconName]="item.iconName"></google-icon>
+      <span>{{ item.nameOption }}</span>
+    </a>
+    <div class="menu-separator" *ngIf="item.type === 'separator'"></div>
+  </ng-container>
+</ul>

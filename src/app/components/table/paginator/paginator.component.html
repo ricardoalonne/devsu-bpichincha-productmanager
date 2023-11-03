@@ -1,0 +1,29 @@
+<div class="table-paginator flex align-items-center justify-content-between">
+  <div class="flex gap-3">
+    <!-- <span></span> -->
+    <select [(ngModel)]="pageSize" (change)="onPageSizeChanged()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+  <div class="flex gap-2 align-items-center">
+    <span>{{ paginationInfo }}</span>
+    <div class="flex gap-1">
+      <button
+        class="button-icon button-transparent"
+        (click)="onPrevPage()"
+        [disabled]="page <= 0"
+      >
+        <google-icon iconName="chevron_left"></google-icon>
+      </button>
+      <button
+        class="button-icon button-transparent"
+        (click)="onNextPage()"
+        [disabled]="currentTotal === 0 || (isLastPage && isLastPage === true)"
+      >
+        <google-icon iconName="chevron_right"></google-icon>
+      </button>
+    </div>
+  </div>
+</div>

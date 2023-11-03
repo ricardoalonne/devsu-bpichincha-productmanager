@@ -1,0 +1,14 @@
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--card-shadow);
+  border-radius: 12px;
+
+  .card-footer {
+    display: flex;
+    padding: 0 1rem 1rem 0;
+    padding: 1rem 0;
+  }
+}

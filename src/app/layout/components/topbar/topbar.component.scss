@@ -1,0 +1,23 @@
+.toogle-menu {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid transparent;
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgb(238, 238, 238);
+    border-radius: 1rem;
+  }
+}
+
+.content-main-logo {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 5rem;
+
+  @media (max-width: 576px) {
+    padding: 0.5rem 0;
+  }
+}

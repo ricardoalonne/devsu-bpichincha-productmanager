@@ -1,0 +1,10 @@
+<div class="toast-container">
+  <toast-item
+    *ngFor="let toast of toasts | async"
+    [title]="toast.title"
+    [description]="toast.description"
+    [iconName]="toast.iconName"
+    [severity]="toast.severity"
+    [autoClosing]="toast.autoClosing"
+  ></toast-item>
+</div>
